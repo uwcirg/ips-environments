@@ -2,7 +2,7 @@
 version: "3.7"
 services:
   db:
-    image: postgres:${POSTGRES_IMAGE_TAG:-12}
+    image: postgres:${POSTGRES_IMAGE_TAG:-13}
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -14,14 +14,14 @@ services:
       - internal
 
   fhir:
-    image: hapiproject/hapi:${FHIR_IMAGE_TAG:-v6.6.0}
+    image: hapiproject/hapi:${FHIR_IMAGE_TAG:-v6.8.0}
     environment:
       SPRING_CONFIG_LOCATION: file:///opt/application.yaml
       spring.datasource.url: jdbc:postgresql://db:5432/hapifhir
       spring.datasource.username: postgres
       spring.datasource.password: postgres
       spring.datasource.driverClassName: org.postgresql.Driver
-      spring.jpa.hibernate.dialect: org.hibernate.dialect.PostgreSQL94Dialect
+      spring.jpa.properties.hibernate.dialect: ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgres94Dialect
 
       hapi.fhir.server_address: https://fhir.${BASE_DOMAIN:-localtest.me}/fhir/
     # expose HAPI to internet - remove entire `labels` section if unwanted
@@ -31,6 +31,18 @@ services:
       - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
       - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.tls=true"
       - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
+
+        # add CORS middleware, configured to return `Access-Control-Allow-Origin: *`
+      # NB accessControlAllowOrigin is deprecated, but not noted in docs
+      # https://github.com/traefik/traefik/issues/8796
+      - "traefik.http.middlewares.fhir-${COMPOSE_PROJECT_NAME}-cors.headers.accessControlAllowOriginList=*"
+      # allow all verbs used by FHIR REST
+      - "traefik.http.middlewares.fhir-${COMPOSE_PROJECT_NAME}-cors.headers.accessControlAllowMethods=HEAD,GET,OPTIONS,PATCH,POST,PUT,DELETE"
+      - "traefik.http.middlewares.fhir-${COMPOSE_PROJECT_NAME}-cors.headers.accessControlAllowHeaders=Authorization,Origin,Content-Type,Accept"
+      - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.middlewares=fhir-${COMPOSE_PROJECT_NAME}-cors"
+
+      # Hapi does not EXPOSE the ports it listens on, requiring explicit traefik configuration
+      - "traefik.http.services.fhir-${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=8080"
     volumes:
       - "./config/hapi/application.yaml:/opt/application.yaml:ro"
     depends_on:
