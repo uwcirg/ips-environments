@@ -198,7 +198,8 @@ services:
     image: ghcr.io/uwcirg/llm-wrap:${LLM_SERVICE_IMAGE_TAG:-latest}
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
---
+    labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.llm-service-${COMPOSE_PROJECT_NAME}.rule=Host(`llm-service.${BASE_DOMAIN}`)"
       - "traefik.http.routers.llm-service-${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
       - "traefik.http.routers.llm-service-${COMPOSE_PROJECT_NAME}.tls=true"
