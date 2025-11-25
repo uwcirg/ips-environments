@@ -5,7 +5,7 @@
     <#elseif section = "form">
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
         
-            <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}">
+            <div class="${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}">
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="firstName" class="${properties.kcLabelClass!}">${msg("firstName")}</label>
                 </div>
@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('lastName',properties.kcFormGroupErrorClass!)}">
+            <div class="${messagesPerField.printIfExists('lastName',properties.kcFormGroupErrorClass!)}">
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="lastName" class="${properties.kcLabelClass!}">${msg("lastName")}</label>
                 </div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('email',properties.kcFormGroupErrorClass!)}">
+            <div class="${messagesPerField.printIfExists('email',properties.kcFormGroupErrorClass!)}">
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="email" class="${properties.kcLabelClass!}">${msg("email")}</label>
                 </div>
@@ -33,7 +33,7 @@
             </div>
 
           <#if !realm.registrationEmailAsUsername>
-            <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('username',properties.kcFormGroupErrorClass!)}">
+            <div class="${messagesPerField.printIfExists('username',properties.kcFormGroupErrorClass!)}">
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="username" class="${properties.kcLabelClass!}">${msg("username")}</label>
                 </div>
@@ -44,7 +44,7 @@
           </#if>
 
             <#if passwordRequired??>
-            <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('password',properties.kcFormGroupErrorClass!)}">
+            <div class="${messagesPerField.printIfExists('password',properties.kcFormGroupErrorClass!)}">
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
                 </div>
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('password-confirm',properties.kcFormGroupErrorClass!)}">
+            <div class="${messagesPerField.printIfExists('password-confirm',properties.kcFormGroupErrorClass!)}">
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
                 </div>

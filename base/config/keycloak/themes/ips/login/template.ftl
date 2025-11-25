@@ -42,7 +42,7 @@
         </header>
         <div id="kc-header" class="${properties.kcHeaderClass!}">
             <div id="kc-header-wrapper" class="${properties.kcHeaderWrapperClass!}">
-                <img style="margin-top: 1rem; padding-top: 1px; height:100%; width: 100%; max-width: 420px; display: block; margin-left: auto; margin-right: auto;" src="${url.resourcesPath}/img/${properties.logo!}" alt="Logo">
+                <img style="margin-top: 1rem; padding-top: 1rem; padding-left: 1rem; padding-right: 1rem; height:100%; width: 100%; max-width: 420px; display: block; margin-left: auto; margin-right: auto;" src="${url.resourcesPath}/img/${properties.logo!}" alt="Logo">
                 <#if properties.systemType?has_content>
                     <div id="kc-system-type">${kcSanitize(msg("systemType", properties.systemType))?no_esc}</div>
                 </#if>
