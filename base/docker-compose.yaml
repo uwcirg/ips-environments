@@ -106,6 +106,10 @@ services:
       # trust traefik Host headers
       KC_HOSTNAME_STRICT: "false"
 
+      # logging
+      KC_SPI_EVENTS_LISTENER_JBOSS_LOGGING_SUCCESS_LEVEL: info
+      KC_SPI_EVENTS_LISTENER_JBOSS_LOGGING_ERROR_LEVEL: error
+
       KEYCLOAK_ADMIN: admin
 
       KEYCLOAK_SHL_CREATOR_BASE: https://${BASE_DOMAIN}
