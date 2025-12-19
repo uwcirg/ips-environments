@@ -88,7 +88,7 @@
                                 <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
                                         <#list social.providers as p>
                                                 <li style="width: 100%" class="${properties.kcFormGroupClass!}">
-                                                        <button class="gsi-material-button" style="width:100%" href="${p.loginUrl}">
+                                                        <button class="gsi-material-button" style="width:100%" onclick="location.href='${p.loginUrl}'">
                                                                 <div class="gsi-material-button-state"></div>
                                                                 <div class="gsi-material-button-content-wrapper">
                                                                         <div class="gsi-material-button-icon">
