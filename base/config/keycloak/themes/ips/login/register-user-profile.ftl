@@ -36,6 +36,7 @@
 		                    <div class="${properties.kcInputWrapperClass!}">
 		                        <input type="password" id="password-confirm" class="${properties.kcInputClass!}"
 		                               name="password-confirm"
+																	 autocomplete="new-password"
 		                               aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
 		                        />
 		
