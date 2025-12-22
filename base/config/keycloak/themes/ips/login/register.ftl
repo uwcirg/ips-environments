@@ -71,6 +71,25 @@
             </div>
             </#if>
 
+            <#if termsAcceptanceRequired??>
+                <div class="form-group">
+                    <div class="${properties.kcInputWrapperClass!}">
+                        ${msg("termsTitle")}
+                        <div id="kc-registration-terms-text">
+                            ${kcSanitize(msg("termsText"))?no_esc}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="${properties.kcLabelWrapperClass!}">
+                        <input type="checkbox" id="termsAccepted" name="termsAccepted" class="${properties.kcCheckboxInputClass!}"
+                                aria-invalid="<#if messagesPerField.existsError('termsAccepted')>true</#if>"
+                        />
+                        <label for="termsAccepted" class="${properties.kcLabelClass!}">${msg("acceptTerms")}</label>
+                    </div>
+                </div>
+            </#if>
+
             <div class="${properties.kcFormGroupClass!}">
                 <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
                     <div class="${properties.kcFormOptionsWrapperClass!}">
