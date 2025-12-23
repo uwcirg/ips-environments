@@ -4,6 +4,10 @@
         ${msg("termsTitle")}
     <#elseif section = "form">
     <div id="kc-terms-text">
+        ${kcSanitize(msg("termsUpdatedText"))?no_esc}
+    </div>
+    <br>
+    <div id="kc-terms-text">
         ${kcSanitize(msg("termsText"))?no_esc}
     </div>
     <form class="form-actions" action="${url.loginAction}" method="POST">
