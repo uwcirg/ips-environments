@@ -391,6 +391,16 @@ h1#kc-page-title {
   margin-bottom: 16px;
 }
 
+.subtitle {
+  font-size: var(--small-body-font-size);
+  color: var(--label-color);
+}
+
+.error-text {
+  color: red;
+  font-size: var(--small-body-font-size);
+}
+
 .gsi-material-button {
   -moz-user-select: none;
   -webkit-user-select: none;
