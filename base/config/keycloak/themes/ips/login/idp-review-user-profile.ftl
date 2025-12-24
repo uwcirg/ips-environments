@@ -39,13 +39,7 @@
                 </div>
 
                 <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                    <input style="margin-bottom: 1em" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}" />
-                    <button class="gsi-material-button" style="width:100%; font-size: var(--default-body-font-size)" onclick="location.href='${url.loginUrl}'">
-                      <div class="gsi-material-button-state"></div>
-                      <div class="gsi-material-button-content-wrapper">
-                              Cancel
-                      </div>
-                    </button>
+                    <input style="margin-bottom: 1em" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doRegister")}" />
                 </div>
             </div>
         </form>
