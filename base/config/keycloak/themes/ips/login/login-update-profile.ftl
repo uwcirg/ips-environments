@@ -3,7 +3,7 @@
     <#if section = "header">
         ${msg("loginProfileTitle")}
     <#elseif section = "form">
-        <form id="kc-idp-review-profile-form" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
+        <form id="kc-login-update-profile-form" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
     
             <@userProfileCommons.userProfileFormFields/>
     
